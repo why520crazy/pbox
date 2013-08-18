@@ -37,7 +37,7 @@
                 var self = this;
                 this.options = options;
                 this.$element = $element;
-                this.pBox = null;
+                this.boxElement = null;
                 var init = function () {
                     var template = "";
                     if (!$.isEmptyObject(options.template)) {
@@ -50,10 +50,10 @@
                     } else {
                         throw new Error("template ");
                     }
-                    var pBox = $("<div class='pbox'></div>");
-                    pBox.append(template);
-                    $body.append(pBox);
-                    self.pBox = pBox;
+                    var boxElement = $("<div class='pbox'></div>");
+                    boxElement.append(template);
+                    $body.append(boxElement);
+                    self.boxElement = boxElement;
                     $element.bind("click.pbox", function () {
                         self.open();
                     })
@@ -65,6 +65,7 @@
             }
 
             pBoxFn.prototype.open = function () {
+                var pBox = this;
                 if (this.$element.hasClass("open")) {
                     this.close();
                 } else {
@@ -72,16 +73,16 @@
                         left = this.$element.offset().left,
                         elementOuterWidth = this.$element.outerWidth(),
                         elementOuterHeight = this.$element.outerHeight(),
-                        boxWidth = this.pBox.outerWidth(true),
-                        boxWidth = this.pBox.outerWidth(true);
+                        boxWidth = pBox.boxElement.outerWidth(true),
+                        boxWidth = pBox.boxElement.outerWidth(true);
                     //elementWidth = this.$element.width(),
                     //elementHeight = this.$element.height(),
                     //X = this.$element.position().top,
                     //Y = this.$element.position().left;
                     switch (this.options.placement) {
                         case "bottom":
-                            this.pBox.css("top", (top + elementOuterHeight + this.options.offset) + "px");
-                            this.pBox.css("left", left);
+                            this.boxElement.css("top", (top + elementOuterHeight + this.options.offset) + "px");
+                            this.boxElement.css("left", left);
                             break;
                         case "top":
                             break;
@@ -89,18 +90,38 @@
                             break;
                     }
 
-                    this.pBox.addClass("open");
-                    this.pBox.removeClass("close");
+                    this.boxElement.addClass("open");
+                    this.boxElement.removeClass("close");
                     this.$element.addClass("open");
                     //this.$element.removeClass("close");
+
+                    if(this.options.autoClose === true){
+                        this.$element.bind("mousedown.pbox",function(event){
+                            event.stopPropagation();
+                        });
+
+                        $document.bind("mousedown.pbox",function(event){
+                            pBox.close();
+                        });
+
+                        pBox.boxElement.bind("mousedown.pbox",function(event){
+                            event.stopPropagation();
+                        });
+                    }
                 }
             }
 
             pBoxFn.prototype.close = function () {
                 this.$element.removeClass("open");
                 //this.$element.addClass("close");
-                this.pBox.removeClass("open");
-                this.pBox.addClass("close");
+                this.boxElement.removeClass("open");
+                this.boxElement.addClass("close");
+
+                if(this.options.autoClose === true){
+                    this.$element.unbind("mousedown.pbox");
+                    $document.unbind("mousedown.pbox");
+                    this.boxElement.unbind("mousedown.pbox");
+                }
             }
 
             pBoxFn.prototype.destroy = function () {
