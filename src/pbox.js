@@ -21,7 +21,8 @@
         triggerClass   : 'in',
         popboxOpenClass: 'pbox-open',
         autoClose      : true,
-        offset         : 4
+        offset         : 4,
+        align          : null
     }
 
     var tools = {
@@ -69,22 +70,36 @@
                 if (this.$element.hasClass("open")) {
                     this.close();
                 } else {
-                    var top = this.$element.offset().top,
-                        left = this.$element.offset().left,
+                    var elementTop = this.$element.offset().top,
+                        elementLeft = this.$element.offset().left,
+                        elementRight = this.$element.offset().right,
+                        top , left,
                         elementOuterWidth = this.$element.outerWidth(),
                         elementOuterHeight = this.$element.outerHeight(),
                         boxWidth = pBox.boxElement.outerWidth(true),
-                        boxWidth = pBox.boxElement.outerWidth(true);
+                        boxHeight = pBox.boxElement.outerHeight(true);
                     //elementWidth = this.$element.width(),
                     //elementHeight = this.$element.height(),
                     //X = this.$element.position().top,
                     //Y = this.$element.position().left;
                     switch (this.options.placement) {
                         case "bottom":
-                            this.boxElement.css("top", (top + elementOuterHeight + this.options.offset) + "px");
+                            top = elementTop + elementOuterHeight + this.options.offset;
+                            if (options.align === "left") {
+                                left = elementLeft;
+                            } else if (options.align === "right") {
+                                left = elementLeft;
+                            }
+                            else {
+                                left = elementLeft - boxWidth / 2 + elementOuterWidth / 2;
+                            }
+                            if(top > 0)
+                            this.boxElement.css("top", top);
                             this.boxElement.css("left", left);
                             break;
-                        case "top":
+                        case
+                        "top"
+                        :
                             break;
                         default:
                             break;
@@ -95,16 +110,16 @@
                     this.$element.addClass("open");
                     //this.$element.removeClass("close");
 
-                    if(this.options.autoClose === true){
-                        this.$element.bind("mousedown.pbox",function(event){
+                    if (this.options.autoClose === true) {
+                        this.$element.bind("mousedown.pbox", function (event) {
                             event.stopPropagation();
                         });
 
-                        $document.bind("mousedown.pbox",function(event){
+                        $document.bind("mousedown.pbox", function (event) {
                             pBox.close();
                         });
 
-                        pBox.boxElement.bind("mousedown.pbox",function(event){
+                        pBox.boxElement.bind("mousedown.pbox", function (event) {
                             event.stopPropagation();
                         });
                     }
@@ -117,7 +132,7 @@
                 this.boxElement.removeClass("open");
                 this.boxElement.addClass("close");
 
-                if(this.options.autoClose === true){
+                if (this.options.autoClose === true) {
                     this.$element.unbind("mousedown.pbox");
                     $document.unbind("mousedown.pbox");
                     this.boxElement.unbind("mousedown.pbox");
@@ -127,7 +142,6 @@
             pBoxFn.prototype.destroy = function () {
 
             }
-
 
             return this.each(function () {
                 var $element = $(this);
