@@ -45,11 +45,29 @@
         <p>this is a good jquery plug-in, to pop box</p>
 
         <p>
-            <a class="btn btn-primary btn-large click_pbox">
+            <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="right">
                 Click pbox 1
             </a>
-            <a class="btn btn-primary btn-large click_pbox" >
+            <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="left">
                 Click pbox 2
+            </a>
+            <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="left">
+                Click pbox 3
+            </a>
+            <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="left">
+                Click pbox 4
+            </a>
+            <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="right">
+                Click pbox 5
+            </a>
+            <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="middle">
+                Click pbox 6
+            </a>
+            <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="left">
+                Click pbox 7
+            </a>
+            <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="left">
+                8
             </a>
         </p>
     </div>
@@ -122,6 +140,9 @@
         </div>
     </div>
 
+    <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="right">
+        Click pbox 1
+    </a>
 </div>
 
 <footer class="footer">
@@ -137,7 +158,8 @@
 
 <script>
     var tp = '<div class="pbox-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3>我是头部</h3></div>'+
-            '<div class="pbox-body">content<p>我是内容！！</p><p>我是内容！！</p></div><div class="pbox-footer"><button class="btn">click</button></div>';
+            '<div class="pbox-body">content<p>我是内容！！</p><p>我是内容！！</p></div>'+
+            '<div class="pbox-footer"><button class="btn">测试按钮</button></div>';
     //    $("#click_pbox").bind("click",function(){
     //
     //    })
