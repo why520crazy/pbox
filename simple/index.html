@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>pBox</title>
+    <meta name="description" content="pBox">
+    <meta name="author" content="why520crazy">
+
+    <link href="../css/pbox.css" rel="stylesheet">
+    <link href="../css/simple.css" rel="stylesheet">
+    <link href="../lib/bootstrap/2.3.2/css/bootstrap.css" rel="stylesheet">
+    <link href="../lib/bootstrap/2.3.2/css/bootstrap-responsive.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="#">pBox</a>
+
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li class="active">
+                        <a href="#">首页</a>
+                    </li>
+                    <li class="">
+                        <a href="#">联系我们</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="hero-unit">
+        <h1>Hello pbox!!!</h1>
+
+        <p>this is a good jquery plug-in, to pop box</p>
+
+        <p>
+            <a class="btn btn-primary btn-large" id="click_pbox1">
+                Click pbox 1
+            </a>
+            <a class="btn btn-primary btn-large" id="click_pbox2">
+                Click pbox 2
+            </a>
+        </p>
+    </div>
+    <div id="myCarousel" class="carousel slide">
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class=""></li>
+            <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+            <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+        </ol>
+        <div class="carousel-inner" style="width: 830px;">
+            <div class="item active left">
+                <img src="http://getbootstrap.com/2.3.2/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+
+                <div class="carousel-caption">
+                    <h4>First Thumbnail label</h4>
+
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida
+                        at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                </div>
+            </div>
+            <div class="item next left">
+                <img src="http://getbootstrap.com/2.3.2/assets/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
+
+                <div class="carousel-caption">
+                    <h4>Second Thumbnail label</h4>
+
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida
+                        at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="http://getbootstrap.com/2.3.2/assets/img/bootstrap-mdo-sfmoma-03.jpg" alt="">
+
+                <div class="carousel-caption">
+                    <h4>Third Thumbnail label</h4>
+
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida
+                        at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                </div>
+            </div>
+        </div>
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+    </div>
+
+    <div class="accordion" id="accordion2">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                    Collapsible Group Item #1
+                </a>
+            </div>
+            <div id="collapseOne" class="accordion-body collapse in">
+                <div class="accordion-inner">
+                    Anim pariatur cliche...
+                </div>
+            </div>
+        </div>
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                    Collapsible Group Item #2
+                </a>
+            </div>
+            <div id="collapseTwo" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    Anim pariatur cliche...
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer class="footer">
+    <div class="container">
+        版权所有 2013
+    </div>
+</footer>
+
+
+<script src="../lib/jquery/1.10.2/jquery.js"></script>
+<script src="../lib/bootstrap/2.3.2/js/bootstrap.js"></script>
+<script src="../src/pbox.js"></script>
+
+<script>
+    var tp = '<div class="pbox-header">i am head</div><div class="pbox-body">content</div><div class="pbox-footer"><button class="btn">click</button></div>';
+    //    $("#click_pbox").bind("click",function(){
+    //
+    //    })
+    $(document).ready(function () {
+        $("#click_pbox1").pBox({ template: tp, offset: 0 });
+        $("#click_pbox2").pBox({ template: tp });
+
+    })
+
+</script>
+
+</body>
+</html>
