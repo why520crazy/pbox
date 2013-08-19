@@ -5,9 +5,11 @@
   min-width: 300px;
   min-height: 100px;
   text-align: left;
-  background-color: #fbfbfb;
-  border: 1px solid #e1e1e1;
   font-size: 14px;
+  background: #FFF;
+  border: solid 1px #BBBBBB;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px #999;
 }
 .pbox.pbox-open {
   display: block;

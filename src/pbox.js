@@ -110,6 +110,19 @@
                             else {
                                 left = elementLeft - boxWidth / 2 + elementOuterWidth / 2;
                             }
+
+                            if(left < 0){
+                                left = 4;
+                            }
+                            if(left + boxWidth > dicOuterWidth){
+                                left = undefined;
+                                right = 4;
+                                //this.boxElement.css("right", 4);
+                            }
+                            if(top + boxHeight > dicOuterHeight){
+                                //this.boxElement.css("bottom", top);
+                                top = elementTop - boxHeight - pBox.options.offset;
+                            }
                             break;
                         case "top":
                             break;
@@ -118,24 +131,10 @@
                     }
 
                     if (top !== undefined) {
-                        if(top + boxHeight > dicOuterHeight){
-                            //this.boxElement.css("bottom", top);
-                            this.boxElement.css("top", elementTop - boxHeight - pBox.options.offset);
-                        }else{
-                            this.boxElement.css("top", top);
-                        }
-
+                        this.boxElement.css("top", top);
                     }
                     if (left !== undefined) {
-                        if(left < 0){
-                            left = 4;
-                        }
-                        if(left + boxWidth > dicOuterWidth){
-                            this.boxElement.css("right", 4);
-                        }else{
-                            this.boxElement.css("left", left);
-                        }
-
+                        this.boxElement.css("left", left);
                     }
                     if (right !== undefined) {
                         this.boxElement.css("right", right);

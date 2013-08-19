@@ -143,6 +143,9 @@
     <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="right">
         Click pbox 1
     </a>
+    <a class="btn btn-primary btn-large click_pbox1" data-placement="bottom" data-align="right">
+        Click pbox 2
+    </a>
 </div>
 
 <footer class="footer">
@@ -163,8 +166,11 @@
     //    $("#click_pbox").bind("click",function(){
     //
     //    })
+    var tp1 = '<div class="pbox-body"><p>Hello 我是不一样的pbox  哈哈哈 感谢你点击我！！！</p>'+
+             '<button class="btn">测试按钮</button></div>';
     $(document).ready(function () {
         $(".click_pbox").pBox({ template: tp, offset: 4 });
+        $(".click_pbox1").pBox({ template: tp1, offset: 4 });
     })
 
 </script>
