@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * pbox jQuery Plug v1.0.0
  * https://github.com/why520crazy/pbox
  *
@@ -77,6 +77,7 @@
             }
 
             pBoxFn.prototype.initBox = function () {
+		var self = this;
                 //获取模板内容
                 var template = "";
                 if (!$.isEmptyObject(this.options.content)) {
@@ -93,7 +94,7 @@
                 $boxElement.append(template);
                 $body.append($boxElement);
                 this.$boxElement = $boxElement;
-                $boxElement.find(".close").bind("click", function () {
+                this.$boxElement.find(".close").bind("click", function () {
                     self.close();
                 })
             }
