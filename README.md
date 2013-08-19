@@ -40,3 +40,6 @@ content内容模板：
         &lt;button class="btn"&gt;保存&lt;/button&gt;
 &lt;/div&gt;
 </pre>
+
+实例演示:
+http://why520crazy.github.io/pbox/simple/
