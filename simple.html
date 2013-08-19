@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>pBox</title>
+    <meta name="description" content="pBox">
+    <meta name="author" content="why520crazy">
+
+    <link href="../css/pbox.css" rel="stylesheet">
+    <link href="../css/simple.css" rel="stylesheet">
+    <link href="../lib/bootstrap/2.3.2/css/bootstrap.css" rel="stylesheet">
+    <link href="../lib/bootstrap/2.3.2/css/bootstrap-responsive.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="#">pBox</a>
+
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li class="active">
+                        <a href="#">首页</a>
+                    </li>
+                    <li class="">
+                        <a href="#">联系我们</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="hero-unit">
+        <h1>Hello pbox!!!</h1>
+
+        <p>this is a good jquery plug-in, to pop box</p>
+
+        <p>
+            <a class="btn btn-primary btn-large click_pbox" data-placement="bottom">
+                Click pbox
+            </a>
+        </p>
+    </div>
+    <div style="margin-top: 10px;margin-bottom: 20px;">
+        <p>placement = bottom</p>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="right">
+            align = right
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="right">
+            align = right
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="left">
+            align = left
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="middle">
+            align = middle
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="middle">
+            align = middle
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="right">
+            align = right
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="left">
+            align = left
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="left">
+            align = left
+        </a>
+    </div>
+
+    <div style="margin-top: 10px;margin-bottom: 20px;">
+        <p>placement = top</p>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="top" data-align="right">
+            align = right
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="top" data-align="right">
+            align = right
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="top" data-align="left">
+            align = left
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="top" data-align="middle">
+            align = middle
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="top" data-align="middle">
+            align = middle
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="top" data-align="right">
+            align = right
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="top" data-align="left">
+            align = left
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="top" data-align="left">
+            align = left
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="top" data-align="left">
+            left
+        </a>
+    </div>
+    <p>这是底部的底部</p>
+    <p>这是底部的底部</p>
+    <p>这是底部的底部</p>
+    <p>这是底部的底部</p>
+    <p>这是底部的底部</p>
+    <p>这是底部的底部</p>
+    <p>这是底部的底部</p>
+    <a class="btn btn-primary btn-large click_pbox" title="placement= bottom & align = right" data-placement="bottom" data-align="right">
+        pBox
+    </a>
+    <a class="btn btn-primary btn-large click_pbox1" title="placement= bottom & align = right" data-placement="bottom" data-align="right">
+        pBox
+    </a>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        版权所有 2013
+    </div>
+</footer>
+<script src="../lib/jquery/1.10.2/jquery.js"></script>
+<script src="../lib/bootstrap/2.3.2/js/bootstrap.js"></script>
+<script src="../src/pbox.js"></script>
+
+<script>
+    var tp = '<div class="pbox-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3>我是头部</h3></div>' +
+            '<div class="pbox-body">content<p>我是内容！！</p><p>我是内容！！</p></div>' +
+            '<div class="pbox-footer"><button class="btn">测试按钮</button></div>';
+    //    $("#click_pbox").bind("click",function(){
+    //
+    //    })
+    var tp1 = '<div class="pbox-body"><p>Hello 我是不一样的pbox  哈哈哈 感谢你点击我！！！</p>' +
+            '<p>我是内容！！</p><p>我是内容！！</p><p>我是内容！！</p><button class="btn">测试按钮</button></div>';
+    $(document).ready(function () {
+        $(".click_pbox").pBox({ content: tp, offset: 4 });
+        $(".click_pbox1").pBox({ content: tp1, offset: 4, destroy: false });
+    })
+
+</script>
+
+</body>
+</html>

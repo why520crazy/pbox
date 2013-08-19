@@ -1,0 +1,41 @@
+.pbox {
+  position: absolute;
+  z-index: 1000;
+  display: none;
+  min-width: 300px;
+  text-align: left;
+  font-size: 14px;
+  background: #FFF;
+  border: solid 1px #BBBBBB;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px #999;
+}
+.pbox.pbox-open {
+  display: block;
+}
+.pbox.pbox-close {
+  display: none;
+}
+.pbox .pbox-header {
+  position: relative;
+  padding: 9px 10px;
+  border-bottom: 1px solid #e1e1e1;
+  background-color: #f5f5f5;
+}
+.pbox .pbox-header h3 {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: bolder;
+  margin: 0;
+}
+.pbox .pbox-body {
+  position: relative;
+  padding: 15px;
+}
+.pbox .pbox-footer {
+  position: relative;
+  padding: 10px 15px 0px;
+  margin-bottom: 0;
+  min-height: 40px;
+  border-radius: 0 0 6px 6px;
+}
