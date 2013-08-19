@@ -3,7 +3,6 @@
   z-index: 1000;
   display: none;
   min-width: 300px;
-  min-height: 100px;
   text-align: left;
   font-size: 14px;
   background: #FFF;
@@ -38,6 +37,5 @@
   padding: 10px 15px 0px;
   margin-bottom: 0;
   min-height: 40px;
-  border-top: 1px solid #ddd;
   border-radius: 0 0 6px 6px;
 }

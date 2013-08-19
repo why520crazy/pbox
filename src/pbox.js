@@ -16,15 +16,15 @@
         templateUrl : null,
         template    : "",
         placement   : "bottom",
-        animation   : true,
-        popupDelay  : 0,
-        triggerClass: 'in',
+        animation   : false,
+        delay  : 0,
         openClass   : 'pbox-open',
         closeClass  : 'pbox-close',
         autoClose   : true,
         offset      : 4,
         align       : null,
-        drag        : true
+        drag        : true,
+        destroy     : true
     }
 
     var tools = {
@@ -47,54 +47,64 @@
                 this.options = $.extend({}, defaults, options);
                 this.$element = $element;
                 this.$boxElement = null;
-                var init = function () {
-                    //根据标签语言设置options
-                    var align = self.$element.attr("data-align") || self.$element.attr("align");
-                    if (align !== undefined && align !== null) {
-                        self.options.align = align;
-                    }
-                    var placement = self.$element.attr("data-placement") || self.$element.attr("data-placement");
-                    if (placement !== undefined && placement !== null) {
-                        self.options.placement = placement;
-                    }
 
-                    //获取模板内容
-                    var template = "";
-                    if (!$.isEmptyObject(options.template)) {
-                        template = options.template;
-                    } else if (!$.isEmptyObject(options.templateUrl)) {
-                        //TODO get template by url
-                        template = "URL";
-                        $.get(options.templateUrl, function (data) {
-                        })
-                    } else {
-                        throw new Error("template ");
-                    }
-                    var $boxElement = $("<div class='pbox'></div>");
-                    $boxElement.append(template);
-                    $body.append($boxElement);
-                    self.$boxElement = $boxElement;
-                    $element.bind("click.pbox", function () {
-                        self.open();
-                    })
-                    $boxElement.find(".close").bind("click", function () {
-                        self.close();
-                    })
+                this.init();
+                if(self.options.destroy !== true){
+                    this.initBox();
+                    this.initDrag();
                 }
 
-                init();
-                this.initDrag();
                 return this;
             }
 
-            pBoxFn.prototype.initDrag = function(){
-                var $boxElement = this.$boxElement,options = this.options;
-                if(options.drag !== true){
+            pBoxFn.prototype.init = function () {
+                var self = this;
+                //根据标签语言设置options
+                var align = this.$element.attr("data-align") || this.$element.attr("align");
+                if (align !== undefined && align !== null) {
+                    this.options.align = align;
+                }
+                var placement = this.$element.attr("data-placement") || this.$element.attr("data-placement");
+                if (placement !== undefined && placement !== null) {
+                    this.options.placement = placement;
+                }
+
+                this.$element.bind("click.pbox", function () {
+                    self.open();
+                })
+
+            }
+
+            pBoxFn.prototype.initBox = function(){
+                //获取模板内容
+                var template = "";
+                if (!$.isEmptyObject(this.options.template)) {
+                    template = this.options.template;
+                } else if (!$.isEmptyObject(this.options.templateUrl)) {
+                    //TODO get template by url
+                    template = "URL";
+                    $.get(this.options.templateUrl, function (data) {
+                    })
+                } else {
+                    throw new Error("template ");
+                }
+                var $boxElement = $("<div class='pbox'></div>");
+                $boxElement.append(template);
+                $body.append($boxElement);
+                this.$boxElement = $boxElement;
+                $boxElement.find(".close").bind("click", function () {
+                    self.close();
+                })
+            }
+
+            pBoxFn.prototype.initDrag = function () {
+                var $boxElement = this.$boxElement, options = this.options;
+                if (options.drag !== true) {
                     return;
                 }
                 //拖拽
                 var $pBoxHeader = $boxElement.find(".pbox-header");
-                if($pBoxHeader.length < 0){
+                if ($pBoxHeader.length < 0) {
                     return;
                 }
                 $pBoxHeader.css({cursor: "move"});
@@ -102,7 +112,7 @@
                 $pBoxHeader.bind("mousedown", function (event) {
                     dragParams.flag = true;
 
-                    $pBoxHeader.bind("selectstart",function(){
+                    $pBoxHeader.bind("selectstart", function () {
                         return false;
                     });
                     $currentBox = $boxElement;
@@ -122,21 +132,27 @@
                 $document.bind("mousemove", function (event) {
                     var e = event ? event : window.event;
                     if (dragParams.flag) {
+                        window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
                         var nowX = e.clientX, nowY = e.clientY;
                         var disX = nowX - dragParams.currentX, disY = nowY - dragParams.currentY;
-                        $currentBox.css("left",parseInt(dragParams.left) + disX + "px");
-                        $currentBox.css("top",parseInt(dragParams.top) + disY + "px");
+                        $currentBox.css("left", parseInt(dragParams.left) + disX + "px");
+                        $currentBox.css("top", parseInt(dragParams.top) + disY + "px");
                         //$currentBox.style.top = parseInt(params.top) + disY + "px";
-                        window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
                     }
                 });
             }
 
             pBoxFn.prototype.open = function () {
                 var pBox = this;
+
                 if (this.$element.hasClass(this.options.openClass)) {
                     this.close();
                 } else {
+                    //初始化模板
+                    if(this.options.destroy === true){
+                        this.initBox();
+                        this.initDrag();
+                    }
                     var elementTop = this.$element.offset().top,
                         elementLeft = this.$element.offset().left,
                         elementRight = this.$element.offset().right,
@@ -192,8 +208,12 @@
                         this.$boxElement.css("right", right);
                     }
 
-                    this.$boxElement.addClass(this.options.openClass);
-                    this.$boxElement.removeClass(this.options.closeClass);
+                    if(this.options.animation === true){
+                        pBox.$boxElement.slideToggle("normal");
+                    }else{
+                        this.$boxElement.addClass(this.options.openClass);
+                        this.$boxElement.removeClass(this.options.closeClass);
+                    }
                     this.$element.addClass(this.options.openClass);
 
                     if (this.options.autoClose === true) {
@@ -214,18 +234,29 @@
 
             pBoxFn.prototype.close = function () {
                 this.$element.removeClass(this.options.openClass);
-                this.$boxElement.removeClass(this.options.openClass);
-                this.$boxElement.addClass(this.options.closeClass);
+                if(this.options.animation === true){
+                    this.$boxElement.slideToggle();
+                    //this.$boxElement.removeClass(this.options.openClass);
+                    //this.$boxElement.addClass(this.options.closeClass);
+
+                }else{
+                    this.$boxElement.removeClass(this.options.openClass);
+                    this.$boxElement.addClass(this.options.closeClass);
+                }
 
                 if (this.options.autoClose === true) {
                     this.$element.unbind("mousedown.pbox");
                     $document.unbind("mousedown.pbox");
                     this.$boxElement.unbind("mousedown.pbox");
                 }
+
+                if(this.options.destroy === true){
+                    this.destroy();
+                }
             }
 
             pBoxFn.prototype.destroy = function () {
-
+                this.$boxElement.remove();
             }
 
             return this.each(function () {
