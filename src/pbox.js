@@ -23,7 +23,8 @@
         closeClass  : 'pbox-close',
         autoClose   : true,
         offset      : 4,
-        align       : null
+        align       : null,
+        drag        : true
     }
 
     var tools = {
@@ -32,15 +33,22 @@
 
     $.fn.extend({
         pBox: function (options) {
-            var $document = $(document), $body = $(document.body);
+            var $document = $(document), $body = $(document.body), $currentBox,
+                dragParams = {
+                    left    : 0,
+                    top     : 0,
+                    currentX: 0,
+                    currentY: 0,
+                    flag    : false
+                };
 
             function pBoxFn($element, options) {
                 var self = this;
                 this.options = $.extend({}, defaults, options);
-                ;
                 this.$element = $element;
-                this.boxElement = null;
+                this.$boxElement = null;
                 var init = function () {
+                    //根据标签语言设置options
                     var align = self.$element.attr("data-align") || self.$element.attr("align");
                     if (align !== undefined && align !== null) {
                         self.options.align = align;
@@ -50,6 +58,7 @@
                         self.options.placement = placement;
                     }
 
+                    //获取模板内容
                     var template = "";
                     if (!$.isEmptyObject(options.template)) {
                         template = options.template;
@@ -61,22 +70,66 @@
                     } else {
                         throw new Error("template ");
                     }
-                    var boxElement = $("<div class='pbox'></div>");
-                    boxElement.append(template);
-                    $body.append(boxElement);
-                    self.boxElement = boxElement;
+                    var $boxElement = $("<div class='pbox'></div>");
+                    $boxElement.append(template);
+                    $body.append($boxElement);
+                    self.$boxElement = $boxElement;
                     $element.bind("click.pbox", function () {
                         self.open();
                     })
-                    boxElement.find(".close").bind("click",function(){
+                    $boxElement.find(".close").bind("click", function () {
                         self.close();
                     })
-
                 }
 
                 init();
-
+                this.initDrag();
                 return this;
+            }
+
+            pBoxFn.prototype.initDrag = function(){
+                var $boxElement = this.$boxElement,options = this.options;
+                if(options.drag !== true){
+                    return;
+                }
+                //拖拽
+                var $pBoxHeader = $boxElement.find(".pbox-header");
+                if($pBoxHeader.length < 0){
+                    return;
+                }
+                $pBoxHeader.css({cursor: "move"});
+
+                $pBoxHeader.bind("mousedown", function (event) {
+                    dragParams.flag = true;
+
+                    $pBoxHeader.bind("selectstart",function(){
+                        return false;
+                    });
+                    $currentBox = $boxElement;
+                    var e = event;
+                    dragParams.currentX = e.clientX;
+                    dragParams.currentY = e.clientY;
+                    dragParams.left = $boxElement.offset().left;
+                    dragParams.top = $boxElement.offset().top;
+                });
+
+                $document.bind("mouseup", function (event) {
+                    dragParams.flag = false;
+                    dragParams.left = $boxElement.offset().left;
+                    dragParams.top = $boxElement.offset().top;
+                });
+
+                $document.bind("mousemove", function (event) {
+                    var e = event ? event : window.event;
+                    if (dragParams.flag) {
+                        var nowX = e.clientX, nowY = e.clientY;
+                        var disX = nowX - dragParams.currentX, disY = nowY - dragParams.currentY;
+                        $currentBox.css("left",parseInt(dragParams.left) + disX + "px");
+                        $currentBox.css("top",parseInt(dragParams.top) + disY + "px");
+                        //$currentBox.style.top = parseInt(params.top) + disY + "px";
+                        window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+                    }
+                });
             }
 
             pBoxFn.prototype.open = function () {
@@ -92,8 +145,8 @@
                         top , left, right, bottom,
                         elementOuterWidth = this.$element.outerWidth(),
                         elementOuterHeight = this.$element.outerHeight(),
-                        boxWidth = pBox.boxElement.outerWidth(true),
-                        boxHeight = pBox.boxElement.outerHeight(true);
+                        boxWidth = pBox.$boxElement.outerWidth(true),
+                        boxHeight = pBox.$boxElement.outerHeight(true);
                     //elementWidth = this.$element.width(),
                     //elementHeight = this.$element.height(),
                     //X = this.$element.position().top,
@@ -111,16 +164,15 @@
                                 left = elementLeft - boxWidth / 2 + elementOuterWidth / 2;
                             }
 
-                            if(left < 0){
+                            if (left < 0) {
                                 left = 4;
                             }
-                            if(left + boxWidth > dicOuterWidth){
-                                left = undefined;
-                                right = 4;
-                                //this.boxElement.css("right", 4);
+                            if (left + boxWidth > dicOuterWidth) {
+                                left = dicOuterWidth - boxWidth - 4;
+                                //this.$boxElement.css("right", 4);
                             }
-                            if(top + boxHeight > dicOuterHeight){
-                                //this.boxElement.css("bottom", top);
+                            if (top + boxHeight > dicOuterHeight) {
+                                //this.$boxElement.css("bottom", top);
                                 top = elementTop - boxHeight - pBox.options.offset;
                             }
                             break;
@@ -131,17 +183,17 @@
                     }
 
                     if (top !== undefined) {
-                        this.boxElement.css("top", top);
+                        this.$boxElement.css("top", top);
                     }
                     if (left !== undefined) {
-                        this.boxElement.css("left", left);
+                        this.$boxElement.css("left", left);
                     }
                     if (right !== undefined) {
-                        this.boxElement.css("right", right);
+                        this.$boxElement.css("right", right);
                     }
 
-                    this.boxElement.addClass(this.options.openClass);
-                    this.boxElement.removeClass(this.options.closeClass);
+                    this.$boxElement.addClass(this.options.openClass);
+                    this.$boxElement.removeClass(this.options.closeClass);
                     this.$element.addClass(this.options.openClass);
 
                     if (this.options.autoClose === true) {
@@ -153,7 +205,7 @@
                             pBox.close();
                         });
 
-                        pBox.boxElement.bind("mousedown.pbox", function (event) {
+                        pBox.$boxElement.bind("mousedown.pbox", function (event) {
                             event.stopPropagation();
                         });
                     }
@@ -162,13 +214,13 @@
 
             pBoxFn.prototype.close = function () {
                 this.$element.removeClass(this.options.openClass);
-                this.boxElement.removeClass(this.options.openClass);
-                this.boxElement.addClass(this.options.closeClass);
+                this.$boxElement.removeClass(this.options.openClass);
+                this.$boxElement.addClass(this.options.closeClass);
 
                 if (this.options.autoClose === true) {
                     this.$element.unbind("mousedown.pbox");
                     $document.unbind("mousedown.pbox");
-                    this.boxElement.unbind("mousedown.pbox");
+                    this.$boxElement.unbind("mousedown.pbox");
                 }
             }
 
