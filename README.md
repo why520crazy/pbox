@@ -3,13 +3,13 @@ pbox
 
 jquery 弹框的一个插件
 
-
-<pre>
-
 调用方式
+<pre>
 $(".pbox").pBox({content:'XXXX'})
+</pre>
 
 参数列表
+<pre>
 {
         remoteUrl  : null,
         content    : "",
