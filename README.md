@@ -25,12 +25,12 @@ $(".pbox").pBox({content:'XXXX'})
         destroy    : true
 }
 <xmp>
-        <div class="pbox-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3>我是头部</h3>
-        </div>
-        <div class="pbox-body">
-                content<p>我是内容！！</p><p>我是内容！！</p>
-        </div>
+        &lt;div class="pbox-header"&gt;
+                &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;×&lt;/button&gt;
+                &lt;h3>我是头部&lt;/h3&gt;
+        &lt;/div&gt;
+        &lt;div class="pbox-body"&gt;
+                content&lt;p>我是内容！！&lt;/p&gt;&lt;p>我是内容！！&lt;/p&gt;
+        &lt;/div&gt;
 </xmp>
 </pre>
