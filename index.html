@@ -1,50 +1,88 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Pbox : jquery 弹框的一个插件" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>pBox by why520crazy</title>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Pbox</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
-
   <body>
+    <div class="wrapper">
+      <header>
+        <h1>pBox</h1>
+        <p>jquery 弹框的一个插件</p>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/why520crazy/pbox">View on GitHub</a>
+        <p class="view"><a href="https://github.com/why520crazy/pbox">View the Project on GitHub <small>why520crazy/pbox</small></a></p>
 
-          <h1 id="project_title">Pbox</h1>
-          <h2 id="project_tagline">jquery 弹框的一个插件</h2>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/why520crazy/pbox/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/why520crazy/pbox/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
+        <ul>
+          <li><a href="https://github.com/why520crazy/pbox/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/why520crazy/pbox/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/why520crazy/pbox">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
         <h3>
 <a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h3>
-      </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Pbox maintained by <a href="https://github.com/why520crazy">why520crazy</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+<h1>
+<a name="pbox" class="anchor" href="#pbox"><span class="octicon octicon-link"></span></a>pbox</h1>
+
+<p>jquery 弹框的一个插件</p>
+
+<p>调用方式</p>
+
+<pre>
+$(".pbox").pBox({content:'XXXX'})
+</pre>
+
+<p>参数列表</p>
+
+<pre>
+{
+        remoteUrl  : null,
+        content    : "",
+        placement  : "bottom",
+        animation  : false,
+        delay      : 0,
+        openClass  : 'pbox-open',
+        closeClass : 'pbox-close',
+        autoClose  : true,
+        offset     : 4,
+        align      : null,
+        drag       : true,
+        destroy    : true
+}
+
+</pre>
+
+<p>content内容模板：</p>
+
+<pre>
+&lt;div class="pbox-header"&gt;
+        &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;×&lt;/button&gt;
+        &lt;h3&gt;我是头部&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class="pbox-body"&gt;
+        content&lt;p&gt;我是内容！！&lt;/p&gt;&lt;p&gt;我是内容！！&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="pbox-footer"&gt;
+        &lt;button class="btn"&gt;保存&lt;/button&gt;
+&lt;/div&gt;
+</pre>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/why520crazy">why520crazy</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
-
+    <script src="javascripts/scale.fix.js"></script>
     
-
   </body>
 </html>
