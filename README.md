@@ -34,5 +34,8 @@ content内容模板：
 &lt;div class="pbox-body"&gt;
         content&lt;p>我是内容！！&lt;/p&gt;&lt;p>我是内容！！&lt;/p&gt;
 &lt;/div&gt;
+&lt;div class="pbox-footer"&gt;
+        &lt;button class="btn"&gt;保存&lt;/button&gt;
+&lt;/div&gt;
 
 </pre>
