@@ -11,8 +11,8 @@ $(".pbox").pBox({content:'XXXX'})
 
 参数列表
 {
-        remoteUrl: null,
-        content   : "",
+        remoteUrl  : null,
+        content    : "",
         placement  : "bottom",
         animation  : false,
         delay      : 0,
