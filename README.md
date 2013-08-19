@@ -28,7 +28,7 @@ $(".pbox").pBox({content:'XXXX'})
 </pre>
 
 content内容模板：
-
+<pre>
 &lt;div class="pbox-header"&gt;
         &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;×&lt;/button&gt;
         &lt;h3>我是头部&lt;/h3&gt;
@@ -39,3 +39,4 @@ content内容模板：
 &lt;div class="pbox-footer"&gt;
         &lt;button class="btn"&gt;保存&lt;/button&gt;
 &lt;/div&gt;
+</pre>
