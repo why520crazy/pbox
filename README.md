@@ -25,6 +25,8 @@ $(".pbox").pBox({content:'XXXX'})
         destroy    : true
 }
 
+</pre>
+
 content内容模板：
 
 &lt;div class="pbox-header"&gt;
@@ -37,5 +39,3 @@ content内容模板：
 &lt;div class="pbox-footer"&gt;
         &lt;button class="btn"&gt;保存&lt;/button&gt;
 &lt;/div&gt;
-
-</pre>
