@@ -193,6 +193,25 @@
                             }
                             break;
                         case "top":
+                            top = elementTop - boxHeight - this.options.offset;
+                            left = elementLeft;
+                            if (pBox.options.align === "left") {
+                                left = elementLeft;
+                            } else if (pBox.options.align === "right") {
+                                left = elementLeft + elementOuterWidth - boxWidth;
+                                //right = elementRight - elementOuterWidth;
+                            }
+                            else {
+                                left = elementLeft - boxWidth / 2 + elementOuterWidth / 2;
+                            }
+
+                            if (left < 0) {
+                                left = 4;
+                            }
+                            if (left + boxWidth > dicOuterWidth) {
+                                left = dicOuterWidth - boxWidth - 4;
+                                //this.$boxElement.css("right", 4);
+                            }
                             break;
                         default:
                             break;
