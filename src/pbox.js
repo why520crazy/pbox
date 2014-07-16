@@ -98,7 +98,7 @@
 
     pBoxFn.prototype.initDrag = function () {
         var $boxElement = this.$boxElement, options = this.options;
-        if (options.drag !== true) {
+        if (!options.drag) {
             return;
         }
         //拖拽
@@ -141,7 +141,7 @@
         var pBox = this;
 
         //初始化模板
-        if (this.options.destroy === true) {
+        if (this.options.destroy) {
             this.initBox();
             this.initDrag();
         }
@@ -155,10 +155,6 @@
             elementOuterHeight = this.$element.outerHeight(),
             boxWidth = pBox.$boxElement.outerWidth(true),
             boxHeight = pBox.$boxElement.outerHeight(true);
-        //elementWidth = this.$element.width(),
-        //elementHeight = this.$element.height(),
-        //X = this.$element.position().top,
-        //Y = this.$element.position().left;
         switch (this.options.placement) {
             case "bottom":
                 top = elementTop + elementOuterHeight + this.options.offset;
@@ -191,7 +187,6 @@
                     left = elementLeft;
                 } else if (pBox.options.align === "right") {
                     left = elementLeft + elementOuterWidth - boxWidth;
-                    //right = elementRight - elementOuterWidth;
                 }
                 else {
                     left = elementLeft - boxWidth / 2 + elementOuterWidth / 2;
@@ -254,13 +249,13 @@
             this.$boxElement.addClass(this.options.closeClass);
         }
 
-        if (this.options.autoClose === true) {
+        if (this.options.autoClose) {
             this.$element.unbind("mousedown.pbox");
             $document.unbind("mousedown.pbox");
             this.$boxElement.unbind("mousedown.pbox");
         }
 
-        if (this.options.destroy === true) {
+        if (this.options.destroy) {
             this.destroy();
         }
     };
@@ -272,6 +267,10 @@
     $.fn.pBox = $.fn.pbox = function (options) {
         return this.each(function () {
             var $element = $(this);
+//            var pbox = $element.data("pbox");
+//            if(pbox){
+//                return pbox;
+//            }
             return new pBoxFn($element, options);
         });
     };
