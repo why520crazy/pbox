@@ -110,10 +110,6 @@
 
         $pBoxHeader.bind("mousedown", function (event) {
             dragParams.flag = true;
-
-            $pBoxHeader.bind("selectstart", function () {
-                return false;
-            });
             $currentBox = $boxElement;
             var e = event;
             dragParams.currentX = e.clientX;
