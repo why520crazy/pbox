@@ -136,7 +136,7 @@
                 var disX = nowX - dragParams.currentX, disY = nowY - dragParams.currentY;
                 $currentBox.css("left", parseInt(dragParams.left) + disX + "px");
                 $currentBox.css("top", parseInt(dragParams.top) + disY + "px");
-                //$currentBox.style.top = parseInt(params.top) + disY + "px";
+                return event.preventDefault();
             }
         });
     };
