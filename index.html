@@ -1,90 +1,152 @@
-<!doctype html>
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>pBox by why520crazy</title>
+    <title>pbox - jQuery 弹框插件</title>
+    <meta name="description" content="pBox">
+    <meta name="author" content="why520crazy">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>pBox</h1>
-        <p>jquery 弹框的一个插件</p>
+    <link href="css/pbox.css" rel="stylesheet">
+    <link href="css/simple.css" rel="stylesheet">
+    <link href="lib/bootstrap/2.3.2/css/bootstrap.css" rel="stylesheet">
+    <link href="lib/bootstrap/2.3.2/css/bootstrap-responsive.css" rel="stylesheet">
+</head>
 
-        <p class="view"><a href="https://github.com/why520crazy/pbox">View the Project on GitHub <small>why520crazy/pbox</small></a></p>
+<body>
 
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!--<a class="brand" href="/">pbox</a>-->
 
-        <ul>
-          <li><a href="https://github.com/why520crazy/pbox/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/why520crazy/pbox/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/why520crazy/pbox">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h3>
-<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h3>
-
-<h1>
-<a name="pbox" class="anchor" href="#pbox"><span class="octicon octicon-link"></span></a>pbox</h1>
-
-<p>jquery 弹框的一个插件</p>
-
-<p>调用方式</p>
-
-<pre>
-$(".pbox").pBox({content:'XXXX'})
-</pre>
-
-<p>参数列表</p>
-
-<pre>
-{
-        remoteUrl  : null,
-        content    : "",
-        placement  : "bottom",
-        animation  : false,
-        delay      : 0,
-        openClass  : 'pbox-open',
-        closeClass : 'pbox-close',
-        autoClose  : true,
-        offset     : 4,
-        align      : null,
-        drag       : true,
-        destroy    : true
-}
-
-</pre>
-
-<p>content内容模板：</p>
-
-<pre>
-&lt;div class="pbox-header"&gt;
-        &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;×&lt;/button&gt;
-        &lt;h3&gt;我是头部&lt;/h3&gt;
-&lt;/div&gt;
-&lt;div class="pbox-body"&gt;
-        content&lt;p&gt;我是内容！！&lt;/p&gt;&lt;p&gt;我是内容！！&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="pbox-footer"&gt;
-        &lt;button class="btn"&gt;保存&lt;/button&gt;
-&lt;/div&gt;
-</pre>
-
-<p><a href="http://why520crazy.github.io/pbox/simple/">Click for simple</a></p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/why520crazy">why520crazy</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li class="active">
+                        <a href="/">pbox</a>
+                    </li>
+                    <li class="">
+                        <a href="https://github.com/why520crazy/pbox">源码</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+</div>
+
+<div class="container">
+    <div class="hero-unit">
+        <h1>Hello pbox!!!</h1>
+
+        <p>一款优秀的 jQuery 弹框插件</p>
+
+        <p>
+            <a class="btn btn-primary btn-large click_pbox" data-placement="bottom">
+                Click pbox
+            </a>
+        </p>
+    </div>
+    <div style="margin-top: 10px;margin-bottom: 20px;">
+        <p>placement = bottom</p>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="right">
+            align = right
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="right">
+            align = right
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="left">
+            align = left
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="middle">
+            align = middle
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="middle">
+            align = middle
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="right">
+            align = right
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="left">
+            align = left
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="bottom" data-align="left">
+            align = left
+        </a>
+    </div>
+
+    <div style="margin-top: 10px;margin-bottom: 20px;">
+        <p>placement = top</p>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="top" data-align="right">
+            align = right
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="top" data-align="right">
+            align = right
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="top" data-align="left">
+            align = left
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="top" data-align="middle">
+            align = middle
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="top" data-align="middle">
+            align = middle
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="top" data-align="right">
+            align = right
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="top" data-align="left">
+            align = left
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="top" data-align="left">
+            align = left
+        </a>
+        <a class="btn btn-primary btn-large click_pbox" data-placement="top" data-align="left">
+            left
+        </a>
+    </div>
+    <p>这是底部的底部</p>
+    <p>这是底部的底部</p>
+    <p>这是底部的底部</p>
+    <p>这是底部的底部</p>
+    <p>这是底部的底部</p>
+    <p>这是底部的底部</p>
+    <p>这是底部的底部</p>
+    <a class="btn btn-primary btn-large click_pbox" title="placement= bottom & align = right" data-placement="bottom" data-align="right">
+        pBox
+    </a>
+    <a class="btn btn-primary btn-large click_pbox1" title="placement= bottom & align = right" data-placement="bottom" data-align="right">
+        pBox
+    </a>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        版权所有 2013
+    </div>
+</footer>
+<script src="lib/jquery/1.10.2/jquery.js"></script>
+<script src="lib/bootstrap/2.3.2/js/bootstrap.js"></script>
+<script src="src/pbox.js"></script>
+
+<script>
+    var tp = '<div class="pbox-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3>我是头部</h3></div>' +
+            '<div class="pbox-body">content<p>我是内容！！</p><p>我是内容！！</p></div>' +
+            '<div class="pbox-footer"><button class="btn">测试按钮</button></div>';
+    //    $("#click_pbox").bind("click",function(){
+    //
+    //    })
+    var tp1 = '<div class="pbox-body"><p>Hello 我是不一样的pbox  哈哈哈 感谢你点击我！！！</p>' +
+            '<p>我是内容！！</p><p>我是内容！！</p><p>我是内容！！</p><button class="btn">测试按钮</button></div>';
+    $(document).ready(function () {
+        $(".click_pbox").pbox({ content: tp, offset: 4 });
+        $(".click_pbox1").pbox({ content: tp1, offset: 4, destroy: false });
+    })
+
+</script>
+
+</body>
 </html>

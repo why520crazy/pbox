@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>pBox</title>
+    <title>pbox - jQuery 弹框插件</title>
     <meta name="description" content="pBox">
     <meta name="author" content="why520crazy">
 
@@ -22,15 +22,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="brand" href="#">pBox</a>
+            <!--<a class="brand" href="/">pbox</a>-->
 
             <div class="nav-collapse collapse">
                 <ul class="nav">
                     <li class="active">
-                        <a href="#">首页</a>
+                        <a href="/">pbox</a>
                     </li>
                     <li class="">
-                        <a href="#">联系我们</a>
+                        <a href="https://github.com/why520crazy/pbox">源码</a>
                     </li>
                 </ul>
             </div>
@@ -42,7 +42,7 @@
     <div class="hero-unit">
         <h1>Hello pbox!!!</h1>
 
-        <p>this is a good jquery plug-in, to pop box</p>
+        <p>一款优秀的 jQuery 弹框插件</p>
 
         <p>
             <a class="btn btn-primary btn-large click_pbox" data-placement="bottom">
@@ -142,8 +142,8 @@
     var tp1 = '<div class="pbox-body"><p>Hello 我是不一样的pbox  哈哈哈 感谢你点击我！！！</p>' +
             '<p>我是内容！！</p><p>我是内容！！</p><p>我是内容！！</p><button class="btn">测试按钮</button></div>';
     $(document).ready(function () {
-        $(".click_pbox").pBox({ content: tp, offset: 4 });
-        $(".click_pbox1").pBox({ content: tp1, offset: 4, destroy: false });
+        $(".click_pbox").pbox({ content: tp, offset: 4 });
+        $(".click_pbox1").pbox({ content: tp1, offset: 4, destroy: false });
     })
 
 </script>
