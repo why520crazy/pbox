@@ -2,9 +2,6 @@
  * pbox jQuery Plug v1.0.0
  * https://github.com/why520crazy/pbox
  *
- * Includes Sizzle.js
- * http://sizzlejs.com/
- *
  * Copyright 2013 jQuery Plug
  *
  * Date: 2013-08-18
