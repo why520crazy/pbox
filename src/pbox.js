@@ -273,12 +273,10 @@
         this.$boxElement.remove();
     };
 
-    $.fn.extend({
-        pBox: function (options) {
-            return this.each(function () {
-                var $element = $(this);
-                return new pBoxFn($element, options);
-            });
-        }
-    });
+    $.fn.pBox = $.fn.pbox = function (options) {
+        return this.each(function () {
+            var $element = $(this);
+            return new pBoxFn($element, options);
+        });
+    };
 })(jQuery);
