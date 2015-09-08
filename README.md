@@ -8,6 +8,7 @@ jquery 弹框的一个插件
 $(".pbox").pBox({content:'XXXX'})
 </pre>
 
+
 参数列表
 <pre>
 {
